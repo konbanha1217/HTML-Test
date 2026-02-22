@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>整体＆トレーニングサロン</title>
+<title>ほぐし屋Chiro(カイロ)</title>
 <style>
 :root {
     --text-main: #333;
@@ -13,6 +13,7 @@
     --accent: #2c3e50;
     --btn-bg: #b89b72;
     --btn-text: #fff;
+    --border-color: #ddd;
 }
 
 * {
@@ -21,12 +22,17 @@
     padding: 0;
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     font-family: "Helvetica Neue", Arial, "Hiragino Kaku Gothic ProN", "Hiragino Sans", Meiryo, sans-serif;
     color: var(--text-main);
     background-color: var(--bg-main);
     line-height: 1.6;
     letter-spacing: 0.05em;
+    padding-top: 110px;
 }
 
 a {
@@ -34,57 +40,64 @@ a {
     color: inherit;
 }
 
+/* Header & Navigation */
 header {
     position: fixed;
     top: 0;
     width: 100%;
-    background: rgba(255, 255, 255, 0.95);
+    background: rgba(255, 255, 255, 0.98);
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+}
+
+.header-top {
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 15px 40px;
-    z-index: 1000;
-    box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    border-bottom: 1px solid var(--border-color);
 }
 
 .logo {
-    font-size: 1.2rem;
+    font-size: 1.5rem;
     font-weight: bold;
     letter-spacing: 0.1em;
 }
 
-.reserve-btn {
-    background-color: var(--btn-bg);
-    color: var(--btn-text);
-    padding: 10px 30px;
-    border-radius: 30px;
+.gnav {
+    width: 100%;
+}
+
+.gnav ul {
+    display: flex;
+    justify-content: center;
+    list-style: none;
+    background: #fff;
+}
+
+.gnav li {
+    border-right: 1px solid var(--border-color);
+}
+
+.gnav li:first-child {
+    border-left: 1px solid var(--border-color);
+}
+
+.gnav li a {
+    display: block;
+    padding: 12px 30px;
     font-size: 0.9rem;
     font-weight: bold;
-    transition: opacity 0.3s;
+    transition: background-color 0.3s;
 }
 
-.reserve-btn:hover {
-    opacity: 0.8;
+.gnav li a:hover {
+    background-color: var(--bg-section);
 }
 
-.hero {
-    height: 70vh;
-    background-color: var(--accent);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    color: #fff;
-    margin-top: 60px;
-}
-
-.hero h1 {
-    font-size: 2.5rem;
-    font-weight: 300;
-    letter-spacing: 0.2em;
-    margin-bottom: 20px;
-}
-
+/* Sections */
 section {
     padding: 80px 20px;
 }
@@ -96,14 +109,14 @@ section {
 
 .sec-title {
     text-align: center;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .sec-title h2 {
     font-size: 2rem;
     font-weight: bold;
     font-family: serif;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
 }
 
 .sec-title span {
@@ -113,9 +126,34 @@ section {
     letter-spacing: 0.1em;
 }
 
+.bg-gray {
+    background-color: var(--bg-section);
+}
+
+/* Top Hero */
+#top {
+    height: 60vh;
+    background-color: var(--accent);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    color: #fff;
+    padding: 0 20px;
+}
+
+#top h1 {
+    font-size: 2.5rem;
+    font-weight: 300;
+    letter-spacing: 0.2em;
+    margin-bottom: 20px;
+}
+
+/* Strength */
 .service-grid {
     display: flex;
     gap: 40px;
+    margin-bottom: 40px;
 }
 
 .service-card {
@@ -127,36 +165,22 @@ section {
 }
 
 .service-card h3 {
-    font-size: 1.4rem;
+    font-size: 1.3rem;
     margin-bottom: 20px;
     border-bottom: 2px solid var(--accent);
     padding-bottom: 10px;
 }
 
-.service-info {
-    margin-bottom: 20px;
-}
-
-.service-info h4 {
-    font-size: 1rem;
-    color: var(--btn-bg);
-    margin-bottom: 5px;
-}
-
-.service-info p {
-    font-size: 0.9rem;
-    color: var(--text-light);
-}
-
 .service-list {
     list-style: none;
-    font-size: 0.9rem;
+    font-size: 0.95rem;
+    margin-bottom: 20px;
 }
 
 .service-list li {
     position: relative;
     padding-left: 1.2em;
-    margin-bottom: 8px;
+    margin-bottom: 10px;
 }
 
 .service-list li::before {
@@ -165,37 +189,35 @@ section {
     left: 0;
     color: var(--btn-bg);
     font-size: 0.8em;
-    top: 0.2em;
-}
-
-.bg-gray {
-    background-color: var(--bg-section);
+    top: 0.3em;
 }
 
 .achieve-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 15px;
 }
 
 .achieve-item {
     background: #fff;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     font-weight: bold;
     border-radius: 4px;
-    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    border: 1px solid var(--border-color);
 }
 
+/* Price */
 .price-table {
     width: 100%;
     border-collapse: collapse;
     background: #fff;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.02);
 }
 
 .price-table th, .price-table td {
     padding: 20px;
-    border-bottom: 1px solid #eee;
+    border-bottom: 1px solid var(--border-color);
     text-align: left;
 }
 
@@ -211,32 +233,207 @@ section {
     font-size: 1.2rem;
 }
 
+/* News */
+.news-list {
+    list-style: none;
+    border-top: 1px solid var(--border-color);
+}
+
+.news-list li {
+    border-bottom: 1px solid var(--border-color);
+}
+
+.news-list a {
+    display: flex;
+    padding: 20px 10px;
+    transition: background-color 0.3s;
+}
+
+.news-list a:hover {
+    background-color: #fff;
+}
+
+.news-date {
+    width: 120px;
+    color: var(--text-light);
+    font-size: 0.9rem;
+}
+
+.news-title {
+    flex: 1;
+    font-weight: bold;
+}
+
+/* Access */
+.access-info {
+    display: flex;
+    gap: 40px;
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.access-text {
+    flex: 1;
+}
+
+.access-text dl {
+    display: flex;
+    flex-wrap: wrap;
+    margin-bottom: 20px;
+}
+
+.access-text dt {
+    width: 30%;
+    font-weight: bold;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.access-text dd {
+    width: 70%;
+    padding: 10px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.map-wrapper {
+    flex: 1.5;
+    background: #eee;
+    min-height: 300px;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.map-wrapper iframe {
+    width: 100%;
+    height: 100%;
+    border: 0;
+}
+
+/* Contact */
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+    background: #fff;
+    padding: 40px;
+    border-radius: 8px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.03);
+}
+
+.form-group {
+    margin-bottom: 20px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 8px;
+    font-weight: bold;
+    font-size: 0.9rem;
+}
+
+.form-group input, 
+.form-group textarea {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid var(--border-color);
+    border-radius: 4px;
+    font-family: inherit;
+    font-size: 1rem;
+}
+
+.form-group textarea {
+    resize: vertical;
+}
+
+.submit-btn {
+    display: block;
+    width: 100%;
+    padding: 15px;
+    background-color: var(--accent);
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    font-size: 1.1rem;
+    font-weight: bold;
+    cursor: pointer;
+    transition: opacity 0.3s;
+}
+
+.submit-btn:hover {
+    opacity: 0.8;
+}
+
 footer {
     background: var(--accent);
     color: #fff;
     text-align: center;
-    padding: 40px 20px;
+    padding: 30px 20px;
     font-size: 0.8rem;
 }
 
+/* Responsive */
 @media (max-width: 768px) {
-    header {
-        padding: 15px 20px;
+    body {
+        padding-top: 100px;
     }
-    .hero h1 {
+    
+    .header-top {
+        padding: 15px 20px;
+        justify-content: center;
+    }
+    
+    .gnav ul {
+        justify-content: flex-start;
+        overflow-x: auto;
+        white-space: nowrap;
+        -webkit-overflow-scrolling: touch;
+    }
+    
+    .gnav li a {
+        padding: 10px 15px;
+    }
+    
+    #top h1 {
         font-size: 1.8rem;
     }
-    .service-grid {
+    
+    .service-grid, .access-info {
         flex-direction: column;
     }
+    
     .price-table th, .price-table td {
         display: block;
         width: 100%;
         text-align: center;
     }
+    
     .price-table td {
         padding-top: 0;
-        border-bottom: 2px solid #eee;
+        border-bottom: 2px solid var(--border-color);
+    }
+    
+    .news-list a {
+        flex-direction: column;
+    }
+    
+    .news-date {
+        margin-bottom: 5px;
+    }
+    
+    .access-text dt, .access-text dd {
+        width: 100%;
+        border-bottom: none;
+        padding: 5px 0;
+    }
+    
+    .access-text dd {
+        border-bottom: 1px solid var(--border-color);
+        margin-bottom: 5px;
+    }
+    
+    .map-wrapper {
+        min-height: 250px;
     }
 }
 </style>
@@ -244,108 +441,78 @@ footer {
 <body>
 
 <header>
-    <div class="logo">SALON LOGO</div>
-    <a href="#reserve" class="reserve-btn">RESERVE 予約する</a>
+    <div class="header-top">
+        <div class="logo">ほぐし屋Chiro(カイロ)</div>
+    </div>
+    <nav class="gnav">
+        <ul>
+            <li><a href="#top">トップ</a></li>
+            <li><a href="#strength">強み</a></li>
+            <li><a href="#price">料金プラン</a></li>
+            <li><a href="#access">アクセス</a></li>
+            <li><a href="#news">お知らせ</a></li>
+            <li><a href="#contact">お問い合わせ</a></li>
+        </ul>
+    </nav>
 </header>
 
 <main>
-    <section class="hero">
+    <section id="top">
         <div>
             <h1>心と身体を整える、<br>新しいライフスタイル</h1>
             <p>Chiropractic & Personal Training</p>
         </div>
     </section>
 
-    <section id="service">
+    <section id="strength">
         <div class="section-inner">
             <div class="sec-title">
-                <h2>SERVICE</h2>
-                <span>サービス概要</span>
+                <h2>STRENGTH</h2>
+                <span>当店の強み</span>
             </div>
             
             <div class="service-grid">
                 <div class="service-card">
-                    <h3>カイロプラクティック・マッサージ・整体</h3>
-                    
-                    <div class="service-info">
-                        <h4>コンセプト</h4>
-                        <p>筋肉関連の問題の発見、痛みの特定と改善、姿勢改善。</p>
-                    </div>
-                    
-                    <div class="service-info">
-                        <h4>提供内容</h4>
-                        <ul class="service-list">
-                            <li>ストレッチ</li>
-                            <li>オイルマッサージ</li>
-                            <li>テーピング</li>
-                            <li>骨盤矯正・骨格矯正</li>
-                            <li>小顔矯正</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-info">
-                        <h4>特化分野</h4>
-                        <ul class="service-list">
-                            <li>産後矯正（体系改善、産前産後有効）</li>
-                            <li>妊活用トレーニング</li>
-                        </ul>
-                    </div>
+                    <h3>カイロプラクティック・整体</h3>
+                    <p style="margin-bottom: 15px; color: var(--text-light); font-size: 0.9rem;">筋肉関連の問題を発見し、痛みの特定と改善、姿勢改善を行います。</p>
+                    <ul class="service-list">
+                        <li>ストレッチ・オイルマッサージ</li>
+                        <li>テーピング・骨盤矯正・骨格矯正</li>
+                        <li>小顔矯正・重力を整える整体</li>
+                        <li>産後矯正（体系改善、産前産後有効）</li>
+                        <li>妊活用トレーニング</li>
+                    </ul>
                 </div>
 
                 <div class="service-card">
-                    <h3>トレーニング</h3>
-                    
-                    <div class="service-info">
-                        <h4>コンセプト</h4>
-                        <p>「変わりたい」というきっかけ作り、運動・ダイエット・体質改善のサポート。</p>
-                    </div>
-                    
-                    <div class="service-info">
-                        <h4>提供内容</h4>
-                        <ul class="service-list">
-                            <li>姿勢を整える体幹トレーニング</li>
-                            <li>AI姿勢診断に基づくビフォーアフター</li>
-                            <li>ぎっくり腰予防</li>
-                            <li>スポーツ選手向けトレーニング</li>
-                            <li>ジュニア系トレーニング</li>
-                        </ul>
-                    </div>
-
-                    <div class="service-info">
-                        <h4>その他</h4>
-                        <ul class="service-list">
-                            <li>重力を整える整体</li>
-                            <li>専門的なアドバイス</li>
-                        </ul>
-                    </div>
+                    <h3>パーソナルトレーニング</h3>
+                    <p style="margin-bottom: 15px; color: var(--text-light); font-size: 0.9rem;">「変わりたい」きっかけ作りから、運動・ダイエット・体質改善をサポート。</p>
+                    <ul class="service-list">
+                        <li>姿勢を整える体幹トレーニング</li>
+                        <li>AI姿勢診断に基づくビフォーアフター確認</li>
+                        <li>ぎっくり腰予防</li>
+                        <li>スポーツ選手向け・ジュニア系トレーニング</li>
+                        <li>専門的なアドバイス</li>
+                    </ul>
                 </div>
             </div>
-        </div>
-    </section>
 
-    <section id="achievements" class="bg-gray">
-        <div class="section-inner">
-            <div class="sec-title">
-                <h2>ACHIEVEMENTS</h2>
-                <span>実績</span>
-            </div>
-            
             <div class="achieve-list">
                 <div class="achieve-item">サッカープロ選手2名輩出</div>
                 <div class="achieve-item">水泳中学校全国2冠</div>
-                <div class="achieve-item">全国中学校陸上大会上位入賞（男女）</div>
+                <div class="achieve-item">全国中学校陸上大会上位入賞</div>
                 <div class="achieve-item">1000人以上の指導実績</div>
                 <div class="achieve-item">100人のパーソナルトレーニング実績</div>
-                <div class="achieve-item">登校拒否の子が話せるようになった事例あり</div>
+                <div class="achieve-item">登校拒否の改善事例あり</div>
             </div>
         </div>
     </section>
 
-    <section id="price">
+    <section id="price" class="bg-gray">
         <div class="section-inner">
             <div class="sec-title">
                 <h2>PRICE</h2>
-                <span>料金設定</span>
+                <span>料金プラン</span>
             </div>
             
             <table class="price-table">
@@ -374,10 +541,98 @@ footer {
             </table>
         </div>
     </section>
+
+    <section id="access">
+        <div class="section-inner">
+            <div class="sec-title">
+                <h2>ACCESS</h2>
+                <span>アクセス</span>
+            </div>
+            
+            <div class="access-info">
+                <div class="access-text">
+                    <dl>
+                        <dt>住所</dt>
+                        <dd>〒000-0000<br>都道府県市区町村1-2-3<br>○○ビル 1F</dd>
+                        <dt>営業時間</dt>
+                        <dd>10:00 〜 20:00（最終受付 19:00）</dd>
+                        <dt>定休日</dt>
+                        <dd>毎週水曜日・年末年始</dd>
+                        <dt>最寄り駅</dt>
+                        <dd>○○線「○○駅」より徒歩5分</dd>
+                    </dl>
+                    <p style="font-size: 0.9rem; color: var(--text-light);">※お車でお越しの際は、近隣のコインパーキングをご利用ください。</p>
+                </div>
+                <div class="map-wrapper">
+                    <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3240.8280303808788!2d139.7671248!3d35.6812362!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x60188bfbd89f700b%3A0x277c49ba34ed38!2z5p2x5Lqs6aeF!5e0!3m2!1sja!2sjp!4v1700000000000!5m2!1sja!2sjp" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="news" class="bg-gray">
+        <div class="section-inner">
+            <div class="sec-title">
+                <h2>NEWS</h2>
+                <span>お知らせ</span>
+            </div>
+            
+            <ul class="news-list">
+                <li>
+                    <a href="#news">
+                        <span class="news-date">2026.02.20</span>
+                        <span class="news-title">ホームページをリニューアルしました</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#news">
+                        <span class="news-date">2026.02.15</span>
+                        <span class="news-title">3月の臨時休業に関するお知らせ</span>
+                    </a>
+                </li>
+                <li>
+                    <a href="#news">
+                        <span class="news-date">2026.02.01</span>
+                        <span class="news-title">春の姿勢改善キャンペーン実施中！</span>
+                    </a>
+                </li>
+            </ul>
+        </div>
+    </section>
+
+    <section id="contact">
+        <div class="section-inner">
+            <div class="sec-title">
+                <h2>CONTACT</h2>
+                <span>お問い合わせ</span>
+            </div>
+            
+            <div class="contact-form">
+                <form action="mailto:your_email@example.com" method="post" enctype="text/plain">
+                    <div class="form-group">
+                        <label for="name">お名前</label>
+                        <input type="text" id="name" name="お名前" placeholder="例：山田 太郎" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="email">メールアドレス</label>
+                        <input type="email" id="email" name="Email" placeholder="例：example@domain.com" required>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="message">お問い合わせ内容</label>
+                        <textarea id="message" name="お問い合わせ内容" rows="6" placeholder="ご質問やご相談内容をご記入ください。" required></textarea>
+                    </div>
+                    
+                    <button type="submit" class="submit-btn">メールを送信する</button>
+                </form>
+            </div>
+        </div>
+    </section>
 </main>
 
 <footer>
-    <p>&copy; 2026 SALON LOGO. All Rights Reserved.</p>
+    <p>&copy; 2026 ほぐし屋Chiro(カイロ). All Rights Reserved.</p>
 </footer>
 
 </body>
